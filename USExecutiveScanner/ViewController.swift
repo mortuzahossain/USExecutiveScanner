@@ -43,7 +43,6 @@ class ViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.allowsSelection = false
         tableView.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         tableView.layer.cornerRadius = 5
     }
@@ -99,10 +98,27 @@ extension ViewController : UITableViewDataSource,UITableViewDelegate{
         
         let details:String = "PD: \(history[indexPath.row].pd ?? "")"
         cell.detailTextLabel?.text = details
+        
+        cell.selectionStyle = .none
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        showDeleteDialog(data: history[indexPath.row])
+    }
     
+    func showDeleteDialog(data:History){
+       let ac = UIAlertController(title: "Delete", message: "Do you really want to delete?", preferredStyle: .actionSheet)
+       ac.addAction(UIAlertAction(title: "Yes", style: .default,handler: { UIAlertAction in
+//           self.deleteData(data: data)
+           ac.dismiss(animated: true)
+       }))
+       ac.addAction(UIAlertAction(title: "No", style: .cancel,handler: { UIAlertAction in
+           ac.dismiss(animated: true)
+       }))
+       self.present(ac, animated: true)
+   }
+       
 }
 
 // MARK: FOR BUISNESS LOGIC
