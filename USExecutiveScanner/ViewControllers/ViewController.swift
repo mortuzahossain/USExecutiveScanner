@@ -48,6 +48,11 @@ class ViewController: UIViewController {
         tableView.layer.cornerRadius = 5
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.methodRefreshData(notification:)), name: Notification.Name("refreshhistory"), object: nil)
+        
+        if SessionDefault.getSortType() == "2" {
+            sortSegmentedControl.selectedSegmentIndex = 1
+        }
+        
     }
     
 
@@ -59,6 +64,13 @@ class ViewController: UIViewController {
         self.showManualInputDialog()
     }
     
+    @IBAction func onChangeSortType(_ sender: UISegmentedControl) {
+        var sortType = "1"
+        if sender.selectedSegmentIndex == 1 {
+            sortType = "2"
+        }
+        SessionDefault.setSortType(sortType)
+    }
     
 }
 
