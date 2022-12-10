@@ -41,10 +41,13 @@ class ViewController: UIViewController {
         makeRadiousBackground(btnScan)
         makeRadiousBackground(btnManualInput)
 
+        retrieveData()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.backgroundColor = UIColor.white.withAlphaComponent(0.7)
         tableView.layer.cornerRadius = 5
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.methodRefreshData(notification:)), name: Notification.Name("refreshhistory"), object: nil)
     }
     
 
@@ -95,9 +98,13 @@ extension ViewController : UITableViewDataSource,UITableViewDelegate{
             sType = "SortType: Twilight Sort"
         }
         cell.textLabel?.text = sType
-        
-        let details:String = "PD: \(history[indexPath.row].pd ?? "")"
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
+        var details:String = "PD:- \(history[indexPath.row].pd ?? "")"
+        var bays:String = history[indexPath.row].bay ?? ""
+        bays = bays.replacingOccurrences(of: ".|.", with: "")
+        details = details + "\nBays:- " + bays
         cell.detailTextLabel?.text = details
+        cell.detailTextLabel?.numberOfLines = 2
         
         cell.selectionStyle = .none
         return cell
@@ -110,7 +117,7 @@ extension ViewController : UITableViewDataSource,UITableViewDelegate{
     func showDeleteDialog(data:History){
        let ac = UIAlertController(title: "Delete", message: "Do you really want to delete?", preferredStyle: .actionSheet)
        ac.addAction(UIAlertAction(title: "Yes", style: .default,handler: { UIAlertAction in
-//           self.deleteData(data: data)
+           self.deleteData(data: data)
            ac.dismiss(animated: true)
        }))
        ac.addAction(UIAlertAction(title: "No", style: .cancel,handler: { UIAlertAction in
@@ -119,6 +126,61 @@ extension ViewController : UITableViewDataSource,UITableViewDelegate{
        self.present(ac, animated: true)
    }
        
+}
+
+// MARK: CORE DATA OPERATION
+extension ViewController{
+    
+    func createHistory(data:DataClass){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let item = History(context: managedContext)
+        item.name = data.name
+        item.bay = data.bay
+        item.pd = data.pd
+        item.sorttype = data.sorttype
+        item.zipcode = data.zipcode
+        do {
+            try managedContext.save()
+            NotificationCenter.default.post(name: Notification.Name("refreshhistory"), object: nil, userInfo: nil)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    
+    func deleteData(data:History){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        do {
+            managedContext.delete(data)
+            try managedContext.save()
+            NotificationCenter.default.post(name: Notification.Name("refreshhistory"), object: nil, userInfo: nil)
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
+    
+    func retrieveData() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        do {
+            history = try managedContext.fetch(History.fetchRequest())
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        } catch {
+            print("Failed")
+        }
+    }
+    
+    
+    @objc func methodRefreshData(notification: Notification) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.retrieveData()
+        }
+    }
+    
 }
 
 // MARK: FOR BUISNESS LOGIC
@@ -146,7 +208,7 @@ extension ViewController{
         let alert = UIAlertController(title: "Manual Input", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Enter zip code"
-//            textField.text = "42010508"
+            textField.text = "42010508"
         }
         alert.addAction(UIAlertAction(title: "Search", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0]
@@ -188,6 +250,7 @@ extension ViewController{
                 if decodedData.code == "1000" {
                     DetailsViewController.data = decodedData.data
                     DispatchQueue.main.async {
+                        self.createHistory(data: decodedData.data!)
                         self.goToDetailsPage()
                     }
                 } else {
