@@ -9,7 +9,7 @@ import Foundation
 
 struct CheckResponse: Codable {
     let msg, code: String
-    let data: DataClass
+    let data: DataClass?
 }
 
 struct DataClass: Codable {

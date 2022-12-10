@@ -25,6 +25,7 @@
 		7302F2A2294447A80011DE83 /* QRCodeReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302F298294447A80011DE83 /* QRCodeReader.swift */; };
 		7302F2A3294447A80011DE83 /* SwitchCameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302F299294447A80011DE83 /* SwitchCameraButton.swift */; };
 		7302F2A6294448370011DE83 /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302F2A5294448370011DE83 /* DataClass.swift */; };
+		7346CEA5294466A30032CD3C /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEA4294466A30032CD3C /* ApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		7302F298294447A80011DE83 /* QRCodeReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeReader.swift; sourceTree = "<group>"; };
 		7302F299294447A80011DE83 /* SwitchCameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCameraButton.swift; sourceTree = "<group>"; };
 		7302F2A5294448370011DE83 /* DataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClass.swift; sourceTree = "<group>"; };
+		7346CEA4294466A30032CD3C /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				7302F2A4294447C20011DE83 /* QRScanner */,
+				7346CEB0294491360032CD3C /* API */,
 				7302F279294443FE0011DE83 /* AppDelegate.swift */,
 				7302F27B294443FE0011DE83 /* SceneDelegate.swift */,
 				7302F27D294443FE0011DE83 /* ViewController.swift */,
@@ -89,7 +92,6 @@
 				7302F287294444000011DE83 /* LaunchScreen.storyboard */,
 				7302F28A294444000011DE83 /* Info.plist */,
 				7302F282294443FE0011DE83 /* USExecutiveScanner.xcdatamodeld */,
-				7302F2A5294448370011DE83 /* DataClass.swift */,
 			);
 			path = USExecutiveScanner;
 			sourceTree = "<group>";
@@ -109,6 +111,15 @@
 				7302F294294447A80011DE83 /* ToggleTorchButton.swift */,
 			);
 			path = QRScanner;
+			sourceTree = "<group>";
+		};
+		7346CEB0294491360032CD3C /* API */ = {
+			isa = PBXGroup;
+			children = (
+				7302F2A5294448370011DE83 /* DataClass.swift */,
+				7346CEA4294466A30032CD3C /* ApiService.swift */,
+			);
+			name = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +199,7 @@
 				7302F27A294443FE0011DE83 /* AppDelegate.swift in Sources */,
 				7302F27C294443FE0011DE83 /* SceneDelegate.swift in Sources */,
 				7302F2A2294447A80011DE83 /* QRCodeReader.swift in Sources */,
+				7346CEA5294466A30032CD3C /* ApiService.swift in Sources */,
 				7302F29C294447A80011DE83 /* ReaderOverlayView.swift in Sources */,
 				7302F29F294447A80011DE83 /* QRCodeReaderViewContainer.swift in Sources */,
 				7302F2A3294447A80011DE83 /* SwitchCameraButton.swift in Sources */,
