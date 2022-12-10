@@ -69,15 +69,16 @@ class ViewController: UIViewController {
             do{
                 let decodedData = try JSONDecoder().decode(CheckResponse.self, from: data ?? Data())
                 if decodedData.code == "1000" {
-                    // success
                     print("Success")
                 } else {
-                    // failed
-                    print("Failed")
+                    DispatchQueue.main.async {
+                        Loaf(decodedData.msg, state: .error, location: .top, sender: self).show()
+                    }
                 }
-            }catch let error{
-                print(error)
-                // failed
+            } catch {
+                DispatchQueue.main.async {
+                    Loaf("No Package found", state: .error, location: .top, sender: self).show()
+                }
             }
         }
     }

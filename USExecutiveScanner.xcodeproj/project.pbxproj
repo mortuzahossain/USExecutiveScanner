@@ -26,6 +26,12 @@
 		7302F2A3294447A80011DE83 /* SwitchCameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302F299294447A80011DE83 /* SwitchCameraButton.swift */; };
 		7302F2A6294448370011DE83 /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302F2A5294448370011DE83 /* DataClass.swift */; };
 		7346CEA5294466A30032CD3C /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEA4294466A30032CD3C /* ApiService.swift */; };
+		7346CEBA29449A490032CD3C /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEB429449A490032CD3C /* Manager.swift */; };
+		7346CEBB29449A490032CD3C /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEB529449A490032CD3C /* Controller.swift */; };
+		7346CEBC29449A490032CD3C /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEB629449A490032CD3C /* Animator.swift */; };
+		7346CEBD29449A490032CD3C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEB729449A490032CD3C /* Extensions.swift */; };
+		7346CEBE29449A490032CD3C /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEB829449A490032CD3C /* Icons.swift */; };
+		7346CEBF29449A490032CD3C /* Loaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEB929449A490032CD3C /* Loaf.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +56,12 @@
 		7302F299294447A80011DE83 /* SwitchCameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCameraButton.swift; sourceTree = "<group>"; };
 		7302F2A5294448370011DE83 /* DataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataClass.swift; sourceTree = "<group>"; };
 		7346CEA4294466A30032CD3C /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		7346CEB429449A490032CD3C /* Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
+		7346CEB529449A490032CD3C /* Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
+		7346CEB629449A490032CD3C /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		7346CEB729449A490032CD3C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7346CEB829449A490032CD3C /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
+		7346CEB929449A490032CD3C /* Loaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loaf.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +96,7 @@
 			children = (
 				7302F2A4294447C20011DE83 /* QRScanner */,
 				7346CEB0294491360032CD3C /* API */,
+				7346CEB229449A490032CD3C /* Loaf */,
 				7302F279294443FE0011DE83 /* AppDelegate.swift */,
 				7302F27B294443FE0011DE83 /* SceneDelegate.swift */,
 				7302F27D294443FE0011DE83 /* ViewController.swift */,
@@ -120,6 +133,27 @@
 				7346CEA4294466A30032CD3C /* ApiService.swift */,
 			);
 			name = API;
+			sourceTree = "<group>";
+		};
+		7346CEB229449A490032CD3C /* Loaf */ = {
+			isa = PBXGroup;
+			children = (
+				7346CEB329449A490032CD3C /* Presenter */,
+				7346CEB729449A490032CD3C /* Extensions.swift */,
+				7346CEB829449A490032CD3C /* Icons.swift */,
+				7346CEB929449A490032CD3C /* Loaf.swift */,
+			);
+			path = Loaf;
+			sourceTree = "<group>";
+		};
+		7346CEB329449A490032CD3C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				7346CEB429449A490032CD3C /* Manager.swift */,
+				7346CEB529449A490032CD3C /* Controller.swift */,
+				7346CEB629449A490032CD3C /* Animator.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,19 +230,25 @@
 				7302F29A294447A80011DE83 /* QRCodeReaderResult.swift in Sources */,
 				7302F2A1294447A80011DE83 /* QRCodeReaderView.swift in Sources */,
 				7302F27E294443FE0011DE83 /* ViewController.swift in Sources */,
+				7346CEBC29449A490032CD3C /* Animator.swift in Sources */,
 				7302F27A294443FE0011DE83 /* AppDelegate.swift in Sources */,
 				7302F27C294443FE0011DE83 /* SceneDelegate.swift in Sources */,
 				7302F2A2294447A80011DE83 /* QRCodeReader.swift in Sources */,
 				7346CEA5294466A30032CD3C /* ApiService.swift in Sources */,
 				7302F29C294447A80011DE83 /* ReaderOverlayView.swift in Sources */,
 				7302F29F294447A80011DE83 /* QRCodeReaderViewContainer.swift in Sources */,
+				7346CEBB29449A490032CD3C /* Controller.swift in Sources */,
 				7302F2A3294447A80011DE83 /* SwitchCameraButton.swift in Sources */,
 				7302F29B294447A80011DE83 /* QRCodeReaderViewControllerDelegate.swift in Sources */,
 				7302F29E294447A80011DE83 /* ToggleTorchButton.swift in Sources */,
+				7346CEBE29449A490032CD3C /* Icons.swift in Sources */,
+				7346CEBF29449A490032CD3C /* Loaf.swift in Sources */,
 				7302F2A0294447A80011DE83 /* QRCodeReaderViewControllerBuilder.swift in Sources */,
+				7346CEBD29449A490032CD3C /* Extensions.swift in Sources */,
 				7302F2A6294448370011DE83 /* DataClass.swift in Sources */,
 				7302F29D294447A80011DE83 /* QRCodeReaderViewController.swift in Sources */,
 				7302F284294443FE0011DE83 /* USExecutiveScanner.xcdatamodeld in Sources */,
+				7346CEBA29449A490032CD3C /* Manager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
