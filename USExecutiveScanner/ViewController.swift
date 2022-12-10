@@ -208,7 +208,7 @@ extension ViewController{
         let alert = UIAlertController(title: "Manual Input", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Enter zip code"
-            textField.text = "42010508"
+//            textField.text = "42010508"
         }
         alert.addAction(UIAlertAction(title: "Search", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0]
