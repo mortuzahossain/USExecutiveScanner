@@ -21,5 +21,8 @@
 			</array>
 		</dict>
 	</dict>
+    
+    <key>NSCameraUsageDescription</key>
+    <string>BarCoin wants to access your camera for scanning QR code.</string>
 </dict>
 </plist>
