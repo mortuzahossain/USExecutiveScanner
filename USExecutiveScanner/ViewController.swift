@@ -89,18 +89,15 @@ extension ViewController : UITableViewDataSource,UITableViewDelegate{
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        var sType = ""
+        let sType:String
         if history[indexPath.row].sorttype == "1" {
-            sType = "Night Sort"
+            sType = "SortType: Night Sort"
         } else {
-            sType = "Twilight Sort"
+            sType = "SortType: Twilight Sort"
         }
         cell.textLabel?.text = sType
         
-        var details:String = history[indexPath.row].pd ?? ""
-        var bays:String = history[indexPath.row].bay ?? ""
-        bays = bays.replacingOccurrences(of: ".|.", with: "")
-        details = details + bays
+        let details:String = "PD: \(history[indexPath.row].pd ?? "")"
         cell.detailTextLabel?.text = details
         return cell
     }
