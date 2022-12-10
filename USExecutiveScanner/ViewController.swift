@@ -30,12 +30,19 @@ class ViewController: UIViewController {
     func makeRadiousBackground(_ btn:UIButton){
         btn.layer.cornerRadius = 8
     }
+    
 
     @IBAction func clickOnScan(_ sender: Any) {
+        goToDetailsPage()
     }
     
     @IBAction func clickOnManualInput(_ sender: Any) {
         self.showManualInputDialog()
+    }
+    
+    func goToDetailsPage(){
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "Details") as! DetailsViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
     
@@ -103,7 +110,7 @@ extension UIViewController {
         hudView.alpha = 0.9
         hudView.layer.cornerRadius = hudView.bounds.size.width/2
         indicatorView.center = CGPoint(x: hudView.frame.size.width/2, y: hudView.frame.size.height/2)
-        indicatorView.style = UIActivityIndicatorView.Style.white
+        indicatorView.style = UIActivityIndicatorView.Style.medium
         indicatorView.color = UIColor.white
         hudView.addSubview(indicatorView)
         indicatorView.startAnimating()

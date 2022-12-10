@@ -32,6 +32,7 @@
 		7346CEBD29449A490032CD3C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEB729449A490032CD3C /* Extensions.swift */; };
 		7346CEBE29449A490032CD3C /* Icons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEB829449A490032CD3C /* Icons.swift */; };
 		7346CEBF29449A490032CD3C /* Loaf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEB929449A490032CD3C /* Loaf.swift */; };
+		7346CEC12944A6A10032CD3C /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7346CEC02944A6A10032CD3C /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		7346CEB729449A490032CD3C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7346CEB829449A490032CD3C /* Icons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Icons.swift; sourceTree = "<group>"; };
 		7346CEB929449A490032CD3C /* Loaf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loaf.swift; sourceTree = "<group>"; };
+		7346CEC02944A6A10032CD3C /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				7302F279294443FE0011DE83 /* AppDelegate.swift */,
 				7302F27B294443FE0011DE83 /* SceneDelegate.swift */,
 				7302F27D294443FE0011DE83 /* ViewController.swift */,
+				7346CEC02944A6A10032CD3C /* DetailsViewController.swift */,
 				7302F27F294443FE0011DE83 /* Main.storyboard */,
 				7302F285294444000011DE83 /* Assets.xcassets */,
 				7302F287294444000011DE83 /* LaunchScreen.storyboard */,
@@ -228,6 +231,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7302F29A294447A80011DE83 /* QRCodeReaderResult.swift in Sources */,
+				7346CEC12944A6A10032CD3C /* DetailsViewController.swift in Sources */,
 				7302F2A1294447A80011DE83 /* QRCodeReaderView.swift in Sources */,
 				7302F27E294443FE0011DE83 /* ViewController.swift in Sources */,
 				7346CEBC29449A490032CD3C /* Animator.swift in Sources */,
