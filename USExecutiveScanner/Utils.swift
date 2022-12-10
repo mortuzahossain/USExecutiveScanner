@@ -23,13 +23,11 @@ extension UIViewController {
         indicatorView.startAnimating()
         view.addSubview(hudView)
     }
+    
     func hideHUD() {
         hudView.removeFromSuperview()
     }
 
-}
-
-extension UIViewController {
     func hideKeyboard() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
@@ -39,5 +37,10 @@ extension UIViewController {
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    func makeRadiousBackground(_ btn:UIButton){
+        btn.layer.cornerRadius = 8
+    }
+    
 }
 

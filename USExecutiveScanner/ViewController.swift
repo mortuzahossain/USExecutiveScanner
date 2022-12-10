@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var btnManualInput: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    var history:[History] = [History]()
     
     lazy var readerVC: QRCodeReaderViewController = {
         let builder = QRCodeReaderViewControllerBuilder {
@@ -40,11 +41,11 @@ class ViewController: UIViewController {
         makeRadiousBackground(btnScan)
         makeRadiousBackground(btnManualInput)
 
-        
-    }
-    
-    func makeRadiousBackground(_ btn:UIButton){
-        btn.layer.cornerRadius = 8
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.allowsSelection = false
+        tableView.backgroundColor = UIColor.white.withAlphaComponent(0.7)
+        tableView.layer.cornerRadius = 5
     }
     
 
@@ -55,6 +56,60 @@ class ViewController: UIViewController {
     @IBAction func clickOnManualInput(_ sender: Any) {
         self.showManualInputDialog()
     }
+    
+    
+}
+
+// MARK: FOR SCAN LOG
+extension ViewController : UITableViewDataSource,UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return history.count
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int
+    {
+        var numOfSections: Int = 0
+        if history.count > 0
+        {
+            tableView.separatorStyle = .singleLine
+            numOfSections            = 1
+            tableView.backgroundView = nil
+        }
+        else
+        {
+            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text          = "No data available"
+            noDataLabel.textColor     = UIColor.black
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+            tableView.separatorStyle  = .none
+        }
+        return numOfSections
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var sType = ""
+        if history[indexPath.row].sorttype == "1" {
+            sType = "Night Sort"
+        } else {
+            sType = "Twilight Sort"
+        }
+        cell.textLabel?.text = sType
+        
+        var details:String = history[indexPath.row].pd ?? ""
+        var bays:String = history[indexPath.row].bay ?? ""
+        bays = bays.replacingOccurrences(of: ".|.", with: "")
+        details = details + bays
+        cell.detailTextLabel?.text = details
+        return cell
+    }
+    
+    
+}
+
+// MARK: FOR BUISNESS LOGIC
+extension ViewController{
     
     func goToDetailsPage(){
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "Details") as! DetailsViewController
@@ -102,9 +157,9 @@ class ViewController: UIViewController {
             return "2"
         }
     }
-    
 }
 
+// MARK: FOR API CALL
 extension ViewController{
     func performApiCall(zipcode:String){
         showHUD()
@@ -135,6 +190,7 @@ extension ViewController{
     }
 }
 
+// MARK: FOR QR SCANNER
 extension ViewController:QRCodeReaderViewControllerDelegate{
     
     func reader(_ reader: QRCodeReaderViewController, didScanResult result: QRCodeReaderResult) {
