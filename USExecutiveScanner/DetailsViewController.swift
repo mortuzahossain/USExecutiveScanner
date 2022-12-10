@@ -12,9 +12,16 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var pdLabel: UILabel!
     @IBOutlet weak var containerCard: UIView!
     @IBOutlet weak var bayLabel: UILabel!
+    
+    static var data:DataClass?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         makeCardView(containerCard)
+        pdLabel.text = DetailsViewController.data?.pd
+        var bays:String = DetailsViewController.data?.bay ?? ""
+        bays = bays.replacingOccurrences(of: ".|.", with: "")
+        bayLabel.text = bays
     }
     
     
@@ -26,15 +33,5 @@ class DetailsViewController: UIViewController {
         cardView.layer.shadowRadius = 6.0
         cardView.layer.shadowOpacity = 0.7
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }

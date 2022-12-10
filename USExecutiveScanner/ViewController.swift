@@ -50,6 +50,7 @@ class ViewController: UIViewController {
         let alert = UIAlertController(title: "Manual Input", message: nil, preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Enter zip code"
+//            textField.text = "42010508"
         }
         alert.addAction(UIAlertAction(title: "Search", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0]
@@ -76,7 +77,10 @@ class ViewController: UIViewController {
             do{
                 let decodedData = try JSONDecoder().decode(CheckResponse.self, from: data ?? Data())
                 if decodedData.code == "1000" {
-                    print("Success")
+                    DetailsViewController.data = decodedData.data
+                    DispatchQueue.main.async {
+                        self.goToDetailsPage()
+                    }
                 } else {
                     DispatchQueue.main.async {
                         Loaf(decodedData.msg, state: .error, location: .top, sender: self).show()
