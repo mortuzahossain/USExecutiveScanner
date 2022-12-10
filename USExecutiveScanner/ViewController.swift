@@ -154,7 +154,8 @@ extension ViewController{
             if text.isEmpty {
                 return
             }
-            self.hideKeyboard()
+            
+            textField?.resignFirstResponder()
             self.performApiCall(zipcode: text)
             
         }))
