@@ -146,12 +146,6 @@ extension ViewController : UITableViewDataSource,UITableViewDelegate{
 extension ViewController{
     
     func createHistory(data:DataClass){
-  
-        // FOR MAKING NON DUPLICATE
-//        if let _ = history.first(where: {$0.zipcode == data.zipcode }) {
-//            return
-//        }
-        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         let item = History(context: managedContext)
@@ -161,6 +155,9 @@ extension ViewController{
         item.sorttype = data.sorttype
         item.zipcode = data.zipcode
         do {
+            if let history = history.first(where: {$0.zipcode == data.zipcode }) {
+                managedContext.delete(history)
+            }
             try managedContext.save()
             NotificationCenter.default.post(name: Notification.Name("refreshhistory"), object: nil, userInfo: nil)
         } catch let error as NSError {
