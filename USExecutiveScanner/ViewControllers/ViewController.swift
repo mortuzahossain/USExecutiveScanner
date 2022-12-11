@@ -146,6 +146,11 @@ extension ViewController : UITableViewDataSource,UITableViewDelegate{
 extension ViewController{
     
     func createHistory(data:DataClass){
+        
+        if let _ = history.first(where: {$0.zipcode == data.zipcode }) {
+            return
+        }
+        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         let item = History(context: managedContext)
