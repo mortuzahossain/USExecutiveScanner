@@ -105,18 +105,20 @@ extension ViewController : UITableViewDataSource,UITableViewDelegate{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let sType:String
         if history[indexPath.row].sorttype == "1" {
-            sType = "SortType: Night Sort"
+            sType = "Sort Type: Night Sort"
         } else {
-            sType = "SortType: Twilight Sort"
+            sType = "Sort Type: Twilight Sort"
         }
-        cell.textLabel?.text = sType
+        let zipCode:String = "Code: \(history[indexPath.row].zipcode ?? "")"
+        cell.textLabel?.text = zipCode
         cell.textLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         var details:String = "PD:- \(history[indexPath.row].pd ?? "")"
         var bays:String = history[indexPath.row].bay ?? ""
         bays = bays.replacingOccurrences(of: ".|.", with: "")
         details = details + "\nBays:- " + bays
+        details = details + "\n" + sType
         cell.detailTextLabel?.text = details
-        cell.detailTextLabel?.numberOfLines = 2
+        cell.detailTextLabel?.numberOfLines = 3
         
         cell.selectionStyle = .none
         return cell
@@ -178,6 +180,7 @@ extension ViewController{
         let managedContext = appDelegate.persistentContainer.viewContext
         do {
             history = try managedContext.fetch(History.fetchRequest())
+            history = history.reversed()
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }

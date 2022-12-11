@@ -71,7 +71,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="U6A-ok-04S">
-                                <rect key="frame" x="20" y="219.33333333333331" width="353" height="598.66666666666674"/>
+                                <rect key="frame" x="20" y="219.33333333333331" width="353" height="588.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" textLabel="Ua7-26-nco" detailTextLabel="tVM-1p-gY9" style="IBUITableViewCellStyleSubtitle" id="d4k-mv-GFG">
@@ -112,7 +112,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="U6A-ok-04S" secondAttribute="trailing" constant="20" id="P1s-SE-XjM"/>
                             <constraint firstItem="L8L-7i-nNW" firstAttribute="top" secondItem="9fm-bC-sQ2" secondAttribute="bottom" constant="10" id="WCt-un-PxJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9fm-bC-sQ2" secondAttribute="trailing" constant="20" id="Y5P-9e-D1n"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="U6A-ok-04S" secondAttribute="bottom" id="eTv-bI-QVM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="U6A-ok-04S" secondAttribute="bottom" constant="10" id="eTv-bI-QVM"/>
                             <constraint firstItem="U6A-ok-04S" firstAttribute="top" secondItem="L8L-7i-nNW" secondAttribute="bottom" constant="10" id="hv5-3A-1Tt"/>
                             <constraint firstItem="U6A-ok-04S" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="mSn-ij-2dz"/>
                             <constraint firstItem="pIC-6F-JF1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="zWs-ao-kwN"/>
